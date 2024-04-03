@@ -7,10 +7,6 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Memo.Types,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo,
   FMX.Helpers.Android,
-  Androidapi.Helpers,
-  Androidapi.JNIBridge,
-  Androidapi.Jni.JavaTypes,
-  Androidapi.JNI.Speech;
 
 type
     // 初始化监听
@@ -23,7 +19,7 @@ type
   TForm1 = class(TForm)
     Memo1: TMemo;
     Button1: TButton;
-    Button2: TButton;
+    Button3: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -79,9 +75,8 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  // 创建时，初始化语音引擎
-  vTTSIniL := TTTSIniL.Create;//创建监听
-  mTextToSpeech := TJTextToSpeech.JavaClass.init(TAndroidHelper.context,vTTSIniL);//初始化语音合成
+  
+  vTTSIniL := TTTSIniL.Create;  mTextToSpeech := TJTextToSpeech.JavaClass.init(TAndroidHelper.context,vTTSIniL);//初始化语音合成
 end;
 
 end.
